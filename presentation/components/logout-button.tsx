@@ -3,7 +3,11 @@
 import { redirect } from "next/navigation";
 import { createClientSide } from "../../lib/supabase/client";
 
-export function LogoutButton() {
+export interface LogoutButtonProps {
+  width?: string;
+}
+
+export function LogoutButton({ width }: LogoutButtonProps) {
 
   const logout = async () => {
     const supabase = createClientSide();  
@@ -18,7 +22,7 @@ export function LogoutButton() {
   };
 
   return (
-    <button className='bg-blue-600 text-white font-bold py-2 px-4 rounded-md' onClick={logout}>Logout</button>
+    <button className='bg-blue-600 text-white font-bold py-2 px-4 rounded-md' style={{ width }} onClick={logout}>Logout</button>
   )
 
 }
