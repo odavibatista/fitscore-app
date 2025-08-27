@@ -1,15 +1,16 @@
-import { DeployButton } from "@/components/deploy-button";
-import { EnvVarWarning } from "@/components/env-var-warning";
-import { AuthButton } from "@/components/auth-button";
-import { Hero } from "@/components/hero";
-import { ThemeSwitcher } from "@/components/theme-switcher";
-import { hasEnvVars } from "@/lib/utils";
-import Link from "next/link";
+import { createClientSide } from "../lib/supabase/client";
+import { redirect } from "next/navigation";
 
-export default function Home() {
+export default async function Home() {
+    const supabase = await createClientSide()
+    const { data } = await supabase.auth.getUser()
+  
+    if (data?.user) {
+        redirect('/dashboard')
+    }
   return (
     <main className="min-h-screen flex flex-col items-center">
-
+      <h1>Seja bem-vindo ao FitScore!</h1>
     </main>
   );
 }

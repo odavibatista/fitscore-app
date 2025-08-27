@@ -1,14 +1,13 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { createClient } from "@/lib/supabase/client";
+import { createClientSide } from "@/lib/supabase/client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Label } from "@radix-ui/react-dropdown-menu";
 import { Input } from "./ui/input";
-import { Button } from "./ui/button";
 
 export function LoginForm({
   className,
@@ -22,7 +21,7 @@ export function LoginForm({
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    const supabase = createClient();
+    const supabase = createClientSide();
     setIsLoading(true);
     setError(null);
 
@@ -83,9 +82,9 @@ export function LoginForm({
                 />
               </div>
               {error && <p className="text-sm text-red-500">{error}</p>}
-              <Button type="submit" className="w-full" disabled={isLoading}>
+              <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded" disabled={isLoading}>
                 {isLoading ? "Logging in..." : "Login"}
-              </Button>
+              </button>
             </div>
             <div className="mt-4 text-center text-sm">
               Don&apos;t have an account?{" "}

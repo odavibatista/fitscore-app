@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { LoginForm } from '../../../presentation/components/login-form'
 import { login } from './actions'
-import { createClient } from '../../../lib/supabase/server';
+import { createServerSide } from '../../../lib/supabase/server';
 import { useRouter } from 'next/navigation';
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -14,7 +14,7 @@ export default function LoginPage() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    const supabase = createClient();
+    const supabase = createServerSide();
     setIsLoading(true);
     setError(null);
 
