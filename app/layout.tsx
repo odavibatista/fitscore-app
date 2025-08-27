@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { ThemeProvider } from "next-themes";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -9,14 +8,15 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: "FitScore App - People Analytics com IA",
+  description: "A aplicação que transforma dados em insights acionáveis para equipes de alto desempenho.",
 };
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
+  variable: "--font-poppins",
   display: "swap",
   subsets: ["latin"],
+  weight: ["100", "400", "700"],
 });
 
 export default function RootLayout({
@@ -26,15 +26,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+      <body className={`${poppins.className} antialiased`}>
+        {children}
       </body>
     </html>
   );
