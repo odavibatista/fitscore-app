@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { createServerSide } from "../../lib/supabase/server";
+import Header from "@/presentation/components/header";
 
 export default async function RootLayout({
   children,
@@ -15,6 +16,7 @@ export default async function RootLayout({
     }
   return (
     <>
+    
       {children}
     </>
   );
